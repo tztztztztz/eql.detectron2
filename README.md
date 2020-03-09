@@ -1,56 +1,95 @@
-<img src=".github/Detectron2-Logo-Horz.svg" width="300" >
+# Equalization Loss for Long-Tailed Object Recognition
+Jingru Tan, Changbao Wang, Buyu Li, Quanquan Li, 
+Wanli Ouyang, Changqing Yin, Junjie Yan
 
-Detectron2 is Facebook AI Research's next generation software system
-that implements state-of-the-art object detection algorithms.
-It is a ground-up rewrite of the previous version,
-[Detectron](https://github.com/facebookresearch/Detectron/),
-and it originates from [maskrcnn-benchmark](https://github.com/facebookresearch/maskrcnn-benchmark/).
+[[`arXiv`](https://arxiv.org/abs/)] [[`BibTeX`](#CitingEQL)]
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/1381301/66535560-d3422200-eace-11e9-9123-5535d469db19.png"/>
-</div>
+  <img width="70%", src="https://tztztztztz.github.io/images/eql-gradient.jpg"/>
+</div><br/>
 
-### What's New
-* It is powered by the [PyTorch](https://pytorch.org) deep learning framework.
-* Includes more features such as panoptic segmentation, densepose, Cascade R-CNN, rotated bounding boxes, etc.
-* Can be used as a library to support [different projects](projects/) on top of it.
-  We'll open source more research projects in this way.
-* It [trains much faster](https://detectron2.readthedocs.io/notes/benchmarks.html).
-
-See our [blog post](https://ai.facebook.com/blog/-detectron2-a-pytorch-based-modular-object-detection-library-/)
-to see more demos and learn about detectron2.
+In this repository, we release code for Equalization Loss (EQL) in Detectron2. EQL protects the learning for rare categories from being at a disadvantage during the network parameter updating under the long-tailed situation.
 
 ## Installation
+Install Detectron 2 following [INSTALL.md](https://github.com/facebookresearch/detectron2/blob/master/INSTALL.md). You are ready to go!
 
-See [INSTALL.md](INSTALL.md).
+## LVIS Dataset
 
-## Quick Start
-
-See [GETTING_STARTED.md](GETTING_STARTED.md),
-or the [Colab Notebook](https://colab.research.google.com/drive/16jcaJoc6bCFAQ96jDe2HwtXj7BMD_-m5).
-
-Learn more at our [documentation](https://detectron2.readthedocs.org).
-And see [projects/](projects/) for some projects that are built on top of detectron2.
-
-## Model Zoo and Baselines
-
-We provide a large set of baseline results and trained models available for download in the [Detectron2 Model Zoo](MODEL_ZOO.md).
+Following the instruction of [README.md](https://github.com/facebookresearch/detectron2/blob/master/datasets/README.md) to set up the lvis dataset.
 
 
-## License
+## Training
 
-Detectron2 is released under the [Apache 2.0 license](LICENSE).
+To train a model with 8 GPUs run:
+```bash
+cd /path/to/detectron2/projects/EQL
+python train_net.py --config-file configs/eql_mask_rcnn_R_50_FPN_1x.yaml --num-gpus 8
+```
 
-## Citing Detectron
+## Evaluation
 
-If you use Detectron2 in your research or wish to refer to the baseline results published in the [Model Zoo](MODEL_ZOO.md), please use the following BibTeX entry.
+Model evaluation can be done similarly:
+```bash
+cd /path/to/detectron2/projects/EQL
+python train_net.py --config-file configs/eql_mask_rcnn_R_50_FPN_1x.yaml --eval-only MODEL.WEIGHTS /path/to/model_checkpoint
+```
+
+# Pretrained Models
+ 
+## Instance Segmentation on LVIS
+
+<table><tbody>
+<!-- START TABLE -->
+<!-- TABLE HEADER -->
+<th valign="bottom", align="left">Model</th>
+<th valign="bottom">AP</th>
+<th valign="bottom">AP.r</th>
+<th valign="bottom">AP.c</th>
+<th valign="bottom">AP.f</th>
+<th valign="bottom">AP.bbox</th>
+<th valign="bottom">model</th>
+
+<!-- TABLE BODY -->
+<tr><td align="left">R50-FPN-Mask</td>
+<td align="center">21.2</td>
+<td align="center">3.2</td>
+<td align="center">21.1</td>
+<td align="center">28.7</td>
+<td align="center">20.8</td>
+<td align="center"><a href="">model</a>&nbsp;|&nbsp;<a href="">metrics</a></td>
+</tr>
+<tr><td align="left">R50-FPN-Mask-EQL</td>
+<td align="center">24.0</td>
+<td align="center">9.4</td>
+<td align="center">25.2</td>
+<td align="center">28.4</td>
+<td align="center">23.6</td>
+<td align="center"><a href="">model</a>&nbsp;|&nbsp;<a href="">metrics</a></td>
+</tr>
+<tr><td align="left">R50-FPN-Mask-EQL-Resampling</td>
+<td align="center">26.1</td>
+<td align="center">17.2</td>
+<td align="center">27.3</td>
+<td align="center">28.2</td>
+<td align="center">25.4</td>
+<td align="center"><a href="">model</a>&nbsp;|&nbsp;<a href="">metrics</a></td>
+</tr>
+
+</tbody></table>
+
+Note that the final results of these configs have large variance across different runs.
+
+
+## <a name="CitingEQL"></a>Citing EQL
+
+If you use EQL, please use the following BibTeX entry.
 
 ```BibTeX
-@misc{wu2019detectron2,
-  author =       {Yuxin Wu and Alexander Kirillov and Francisco Massa and
-                  Wan-Yen Lo and Ross Girshick},
-  title =        {Detectron2},
-  howpublished = {\url{https://github.com/facebookresearch/detectron2}},
-  year =         {2019}
+@InProceedings{tan2020eql,
+  title={Equalization Loss for Long-Tailed Object Recognition},
+  author={Jingru Tan, Changbao Wang, Buyu Li, Quanquan Li, 
+  Wanli Ouyang, Changqing Yin, Junjie Yan},
+  journal={ArXiv:},
+  year={2020}
 }
 ```
