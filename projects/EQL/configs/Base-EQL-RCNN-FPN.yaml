@@ -22,6 +22,7 @@ MODEL:
     NAME: "EQLROIHeads"
     IN_FEATURES: ["p2", "p3", "p4", "p5"]
     LAMBDA: 0.00177
+    PRIOR_PROB: 0.001
   ROI_BOX_HEAD:
     NAME: "FastRCNNConvFCHead"
     NUM_FC: 2
