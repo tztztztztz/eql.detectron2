@@ -42,16 +42,19 @@ python train_net.py --config-file configs/eql_mask_rcnn_R_50_FPN_1x.yaml --eval-
 <table><tbody>
 <!-- START TABLE -->
 <!-- TABLE HEADER -->
-<th valign="bottom", align="left">Model</th>
+<th valign="bottom", align="left">Backbone</th>
+<th valign="bottom", align="left">Method</th>
 <th valign="bottom">AP</th>
 <th valign="bottom">AP.r</th>
 <th valign="bottom">AP.c</th>
 <th valign="bottom">AP.f</th>
 <th valign="bottom">AP.bbox</th>
-<th valign="bottom">model</th>
+<th valign="bottom">download</th>
 
 <!-- TABLE BODY -->
-<tr><td align="left">R50-FPN-Mask</td>
+<tr>
+<td align="left">R50-FPN</td>
+<td align="left">MaskRCNN</td>
 <td align="center">21.2</td>
 <td align="center">3.2</td>
 <td align="center">21.1</td>
@@ -59,7 +62,9 @@ python train_net.py --config-file configs/eql_mask_rcnn_R_50_FPN_1x.yaml --eval-
 <td align="center">20.8</td>
 <td align="center"><a href="https://www.dropbox.com/s/63q8cf7i62aveo6/model_final.pth?dl=0">model</a>&nbsp;|&nbsp;<a href="https://www.dropbox.com/s/wyfavlqzw17u8qf/log.txt?dl=0">metrics</a></td>
 </tr>
-<tr><td align="left">R50-FPN-Mask-EQL</td>
+<tr>
+<td align="left">R50-FPN</td>
+<td align="left">MaskRCNN-EQL</td>
 <td align="center">24.0</td>
 <td align="center">9.4</td>
 <td align="center">25.2</td>
@@ -67,13 +72,48 @@ python train_net.py --config-file configs/eql_mask_rcnn_R_50_FPN_1x.yaml --eval-
 <td align="center">23.6</td>
 <td align="center"><a href="https://www.dropbox.com/s/ebto3pqdjb24u3x/model_final.pth?dl=0">model</a>&nbsp;|&nbsp;<a href="https://www.dropbox.com/s/fpyb0yfmaydnpva/log.txt?dl=0">metrics</a></td>
 </tr>
-<tr><td align="left">R50-FPN-Mask-EQL-Resampling</td>
+<tr>
+<td align="left">R50-FPN</td>
+<td align="left">MaskRCNN-EQL-Resampling</td>
 <td align="center">26.1</td>
 <td align="center">17.2</td>
 <td align="center">27.3</td>
 <td align="center">28.2</td>
 <td align="center">25.4</td>
 <td align="center"><a href="https://www.dropbox.com/s/rwoq39ji4lywnh9/model_final.pth?dl=0">model</a>&nbsp;|&nbsp;<a href="https://www.dropbox.com/s/8m3pvp6lh0qyahd/log.txt?dl=0">metrics</a></td>
+</tr>
+
+<tr>
+<td align="left">R101-FPN</td>
+<td align="left">MaskRCNN</td>
+<td align="center">22.8</td>
+<td align="center">4.3</td>
+<td align="center">22.7</td>
+<td align="center">30.2</td>
+<td align="center">22.3</td>
+<td align="center"><a href="#">model</a>&nbsp;|&nbsp;<a href="https://www.dropbox.com/s/oe4wyqzbukl6p5r/log.txt?dl=0">metrics</a></td>
+</tr>
+
+<tr>
+<td align="left">R101-FPN</td>
+<td align="left">MaskRCNN-EQL</td>
+<td align="center">25.9</td>
+<td align="center">10.0</td>
+<td align="center">27.9</td>
+<td align="center">29.8</td>
+<td align="center">25.9</td>
+<td align="center"><a href="#">model</a>&nbsp;|&nbsp;<a href="https://www.dropbox.com/s/o5xr7csae3sf3or/log.txt?dl=0">metrics</a></td>
+</tr>
+
+<tr>
+<td align="left">R101-FPN</td>
+<td align="left">MaskRCNN-EQL-Resampling</td>
+<td align="center">27.4</td>
+<td align="center">17.3</td>
+<td align="center">29.0</td>
+<td align="center">29.4</td>
+<td align="center">27.1</td>
+<td align="center"><a href="#">model</a>&nbsp;|&nbsp;<a href="https://www.dropbox.com/s/303juk6ny9y6f0t/log.txt?dl=0">metrics</a></td>
 </tr>
 
 </tbody></table>
