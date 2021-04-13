@@ -2,6 +2,8 @@
 Jingru Tan, Changbao Wang, Buyu Li, Quanquan Li, 
 Wanli Ouyang, Changqing Yin, Junjie Yan
 
+> :warning: We recommend to use the EQLv2 repository ([code](https://github.com/tztztztztz/eqlv2)) which is based on mmdetection. It also includes EQL and other algorithms, such as cRT (classifier-retraining), BAGS (BalanceGroup Softmax).
+
 [[`arXiv`](https://arxiv.org/abs/2003.05176)] [[`BibTeX`](#CitingEQL)]
 
 <div align="center">
